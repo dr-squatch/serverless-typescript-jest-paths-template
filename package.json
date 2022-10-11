@@ -1,0 +1,48 @@
+{
+  "name": "serverless-typescript-webpack-template",
+  "version": "1.0.0",
+  "description": "Serverless aws-nodejs-typescript template",
+  "main": "serverless.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.180.0",
+    "@dr-squatch/lib": "github:dr-squatch/lib",
+    "@jest/globals": "^29.1.1",
+    "@middy/core": "^2.5.3",
+    "@middy/http-json-body-parser": "^2.5.3",
+    "aws-sdk": "^2.1225.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "serverless-lift": "^1.20.2",
+    "serverless-webpack": "^5.10.0",
+    "ts-loader": "^9.4.1",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "webpack": "^5.74.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.0.0",
+    "@types/aws-lambda": "^8.10.71",
+    "@types/jest": "^29.0.3",
+    "@types/node": "^14.14.25",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "esbuild": "^0.14.11",
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "json-schema-to-ts": "^1.5.0",
+    "serverless": "^3.0.0",
+    "serverless-esbuild": "^1.23.3",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.3"
+  },
+  "author": "Riyad Shauk",
+  "license": "MIT"
+}
