@@ -4,10 +4,6 @@ import {
   test,
   expect,
 } from '@jest/globals';
-import { config } from 'dotenv';
-
-config();
-
 import { dynamodb } from './dynamodb';
 
 describe('[lib/aws] dynamodb', () => {

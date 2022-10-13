@@ -1,16 +1,17 @@
-# serverless-typescript-webpack-template
+# serverless-typescript-jest-paths-template
 
 This project has been generated using the [Serverless Create](https://www.serverless.com/framework/docs/providers/aws/cli-reference/create/) command as such:
 ```bash
 serverless create \
-  --template-url https://github.com/dr-squatch/serverless-typescript-webpack-template \
+  --template-url https://github.com/dr-squatch/serverless-typescript-jest-paths-template \
   --path my-service
 ```
 
-This is a template for generating Serverless Framework projects using TypeScript, Webpack, and Eslint.
+This is a template for generating Serverless Framework projects using TypeScript, TypeScript @paths, and Eslint (via es-build).
 
 If you want to use this template with personal projects outside of Dr. Squatch, you will need to remove `@dr-squatch/lib` and any references to that (or stub those out) in your service, as that is a private library.
 
+Also, feel free to check out this [template repo](https://github.com/codetheworld-io/aws-node-http-api-docker-) for another great [example](https://aws.plainenglish.io/a-serverless-typescript-template-with-docker-development-environment-1f6e6683294) (more involved than this current template).
 
 The rest of this README has been generated using the 'aws-nodejs-typescript' template from the [Serverless framework](https://www.serverless.com/).
 

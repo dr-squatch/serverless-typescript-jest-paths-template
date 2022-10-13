@@ -11,14 +11,15 @@ import shopifyOrderCreateWebhook from '@functions/useCases/shopifyOrderCreateWeb
 import shopifyOrderCreateConsumer from '@consumers/shopifyOrderCreate';
 
 const serverlessConfiguration: AWS = {
-  service: 'engineering-events',
+  service: 'serverless-typescript-webpack-template',
   frameworkVersion: '3',
   plugins: [
-    'serverless-webpack',
+    'serverless-esbuild',
     'serverless-lift',
+    'serverless-plugin-scripts',
   ],
   provider: {
-    stage: 'fallback',
+    stage: 'prod', // prefer prod stage, unless alternative purpose is clear
     name: 'aws',
     runtime: 'nodejs14.x',
     apiGateway: {
@@ -47,6 +48,8 @@ const serverlessConfiguration: AWS = {
       SHOPIFY_GRAPHQL_URL: 'https://companyStoreName.myshopify.com/admin/api/2023-01/graphql.json',
       SHOPIFY_API_KEY: '', // prod store API key (create your own in Shopify apps/developer to maintain this services' rate limits independently of other services)
       SHOPIFY_DOMAIN: 'companyStoreName.myshopify.com',
+      ENGINEERING_EVENTS_URL_PROD: '', // todo: fill in with actual URL, see remorse-period-processing, eg
+      ENGINEERING_EVENTS_URL_FALLBACK: '', // todo: fill in with actual URL, see remorse-period-processing, eg
       // === end squatch-lib env vars ===
 
       // update these as desired per use-case (default is us-east-1)
@@ -64,10 +67,21 @@ const serverlessConfiguration: AWS = {
   }, // SQS consumers
   package: { individually: true },
   custom: {
-    webpack: {
-      webpackConfig: './webpack.config.js',
-      includeModules: true,
-      // keepOutputDirectory: true,
+    esbuild: {
+      bundle: true,
+      minify: false,
+      sourcemap: true,
+      exclude: ['aws-sdk'],
+      target: 'node14',
+      define: { 'require.resolve': undefined },
+      platform: 'node',
+      concurrency: 10,
+      tsconfig: 'tsconfig.build.ts',
+    },
+    scripts: {
+      hooks: {
+        'before:deploy:deploy': 'npm test',
+      },
     },
   },
 };
